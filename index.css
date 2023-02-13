@@ -1,0 +1,21 @@
+.main {
+  max-width: 70%;
+  margin: auto;
+}
+
+.book-info {
+  padding: 10px 0;
+  border-bottom: 1px solid #000;
+}
+
+.book-info p {
+  margin: 0;
+}
+
+form {
+  padding: 20px 0;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
