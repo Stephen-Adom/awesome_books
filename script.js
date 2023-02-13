@@ -12,7 +12,7 @@ function listAllBooks() {
       booklistHtml = `${booklistHtml}<div class="book-info">
       <p>${book.title}</p>
       <p>${book.author}</p>
-      <button type="button" title="remove book">Remove</button>
+      <button type="button"  id="${book.id}"title="remove book">Remove</button>
     </div>`;
     });
     booklistContainer.innerHTML = booklistHtml;
@@ -64,4 +64,17 @@ form.addEventListener('submit', (e) => {
 
 window.addEventListener('DOMContentLoaded', () => {
   fetchBooksFromStorage();
+});
+
+function removeBooks(id) {
+  booklists = booklists.filter((book) => book.id !== Number(id));
+  localStorage.setItem('bookLists', JSON.stringify(booklists));
+}
+
+booklistContainer.addEventListener('click', (e) => {
+  if (e.target.tagName === 'BUTTON') {
+    const id = e.target.getAttribute('id');
+    removeBooks(id);
+    listAllBooks();
+  }
 });
