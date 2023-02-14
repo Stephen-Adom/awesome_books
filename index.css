@@ -1,11 +1,27 @@
 .main {
-  max-width: 70%;
+  max-width: 50%;
   margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+body {
+font-family: cursive;
+
+}
+h1 {
+  text-align: center;
 }
 
 .book-info {
   padding: 10px 0;
   border-bottom: 1px solid #000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .book-info p {
@@ -18,4 +34,9 @@ form {
 
 .form-group {
   margin-bottom: 20px;
+}
+
+.book-list-container {
+  width: 100%;
+  border: 3px solid black;
 }

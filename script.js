@@ -44,8 +44,7 @@ class Book {
     if (Book.booklists.length) {
       Book.booklists.forEach((book) => {
         booklistHtml = `${booklistHtml}<div class="book-info">
-        <p>${book.title}</p>
-        <p>${book.author}</p>
+        <p>"${book.title}" by ${book.author}</p>
         <button type="button"  id="${book.id}"title="remove book">Remove</button>
       </div>`;
       });
