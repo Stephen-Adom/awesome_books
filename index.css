@@ -1,11 +1,44 @@
+* {
+  box-sizing: border-box;
+}
+
 .main {
-  max-width: 70%;
+  max-width: 50%;
   margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+body {
+  font-family: cursive;
+}
+
+h1 {
+  text-align: center;
 }
 
 .book-info {
-  padding: 10px 0;
-  border-bottom: 1px solid #000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 4px 12px;
+  box-sizing: border-box;
+}
+
+.book-info:nth-child(odd) {
+  background-color: #eceaea;
+}
+
+button {
+  background: #fff;
+  padding: 4px 12px;
+  border-width: 3px;
+  font-weight: 700;
+  font-size: 13px;
+  box-shadow: 2px 2px;
 }
 
 .book-info p {
@@ -18,4 +51,20 @@ form {
 
 .form-group {
   margin-bottom: 20px;
+}
+
+.form-group input {
+  width: 100%;
+  border-width: 3px;
+}
+
+.book-list-container {
+  width: 100%;
+  border: 3px solid black;
+}
+
+hr {
+  width: 50%;
+  background: black;
+  height: 3px;
 }
