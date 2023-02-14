@@ -66,15 +66,19 @@ window.addEventListener('DOMContentLoaded', () => {
   fetchBooksFromStorage();
 });
 
-function removeBooks(id) {
-  booklists = booklists.filter((book) => book.id !== Number(id));
+
+function removeBooks(id)
+{
+  booklists = booklists.filter(book => book.id !== Number(id));
   localStorage.setItem('bookLists', JSON.stringify(booklists));
+  
 }
 
-booklistContainer.addEventListener('click', (e) => {
-  if (e.target.tagName === 'BUTTON') {
-    const id = e.target.getAttribute('id');
+booklistContainer.addEventListener("click", e =>{
+  if(e.target.tagName==="BUTTON"){
+    const id = e.target.getAttribute("id")
     removeBooks(id);
     listAllBooks();
   }
-});
+  
+})
