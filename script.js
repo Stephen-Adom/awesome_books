@@ -1,53 +1,58 @@
+/* eslint-disable no-use-before-define */
 /* eslint-disable class-methods-use-this */
 
 const booklistContainer = document.querySelector('.book-list-container');
 const form = document.querySelector('form');
 
-let booklists = [];
-
-function listAllBooks() {
-  let booklistHtml = '';
-  if (booklists.length) {
-    booklists.forEach((book) => {
-      booklistHtml = `${booklistHtml}<div class="book-info">
-      <p>${book.title}</p>
-      <p>${book.author}</p>
-      <button type="button"  id="${book.id}"title="remove book">Remove</button>
-    </div>`;
-    });
-    booklistContainer.innerHTML = booklistHtml;
-  } else {
-    booklistContainer.innerHTML = '<h3>No Books Available!!</h3>';
-  }
-}
 class Book {
+  static booklists = [];
+
   constructor(title, author) {
     this.title = title;
     this.author = author;
   }
 
   addBook() {
-    booklists.push({
-      id: booklists.length + 1,
+    Book.booklists.push({
+      id: Book.booklists.length + 1,
       title: this.title,
       author: this.author,
     });
-    listAllBooks();
+    Book.listAllBooks();
+  }
+
+  static removeBooks(id) {
+    Book.booklists = Book.booklists.filter((book) => book.id !== Number(id));
+    localStorage.setItem('bookLists', JSON.stringify(Book.booklists));
   }
 
   saveToStorage() {
-    localStorage.setItem('bookLists', JSON.stringify(booklists));
-  }
-}
-
-function fetchBooksFromStorage() {
-  if (localStorage.getItem('bookLists')) {
-    booklists = JSON.parse(localStorage.getItem('bookLists'));
-  } else {
-    booklists = [];
+    localStorage.setItem('bookLists', JSON.stringify(Book.booklists));
   }
 
-  listAllBooks();
+  static fetchBooksFromStorage() {
+    if (localStorage.getItem('bookLists')) {
+      Book.booklists = JSON.parse(localStorage.getItem('bookLists'));
+    } else {
+      Book.booklists = [];
+    }
+    Book.listAllBooks();
+  }
+
+  static listAllBooks() {
+    let booklistHtml = '';
+    if (Book.booklists.length) {
+      Book.booklists.forEach((book) => {
+        booklistHtml = `${booklistHtml}<div class="book-info">
+        <p>"${book.title}" by ${book.author}</p>
+        <button type="button"  id="${book.id}"title="remove book">Remove</button>
+      </div>`;
+      });
+      booklistContainer.innerHTML = booklistHtml;
+    } else {
+      booklistContainer.innerHTML = '<h3>No Books Available!!</h3>';
+    }
+  }
 }
 
 form.addEventListener('submit', (e) => {
@@ -63,9 +68,10 @@ form.addEventListener('submit', (e) => {
 });
 
 window.addEventListener('DOMContentLoaded', () => {
-  fetchBooksFromStorage();
+  Book.fetchBooksFromStorage();
 });
 
+<<<<<<< HEAD
 
 function removeBooks(id)
 {
@@ -79,6 +85,13 @@ booklistContainer.addEventListener("click", e =>{
     const id = e.target.getAttribute("id")
     removeBooks(id);
     listAllBooks();
+=======
+booklistContainer.addEventListener('click', (e) => {
+  if (e.target.tagName === 'BUTTON') {
+    const id = e.target.getAttribute('id');
+    Book.removeBooks(id);
+    Book.listAllBooks();
+>>>>>>> d9486a8adfa40ec414efbdce0c1479b4d0625338
   }
   
 })
