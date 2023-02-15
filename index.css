@@ -1,5 +1,50 @@
+/* stylelint-disable no-descending-specificity */
 * {
   box-sizing: border-box;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 3px solid black;
+  padding: 0 8px;
+}
+
+nav .navbar-title {
+  margin: 0;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  margin: 8px;
+}
+
+nav ul li {
+  border-right: 2px solid;
+}
+
+nav ul li:last-child {
+  border-right: none;
+}
+
+nav ul li a {
+  text-decoration: none;
+  padding: 0 10px;
+  color: black;
+  font-weight: 500;
+}
+
+.current-date {
+  text-align: right;
+}
+
+.current-date p {
+  font-size: 12px;
+  margin-top: 5px;
+  font-weight: 600;
 }
 
 .main {
@@ -67,4 +112,16 @@ hr {
   width: 50%;
   background: black;
   height: 3px;
+}
+
+footer {
+  width: 100%;
+  border: 3px solid black;
+  padding: 0 8px;
+  margin-top: 40px;
+}
+
+footer p {
+  margin: 8px 0;
+  font-size: 14px;
 }
