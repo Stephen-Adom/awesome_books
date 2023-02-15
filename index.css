@@ -114,9 +114,9 @@ hr {
   height: 3px;
 }
 
-.contact { 
-display: flex;
-flex-direction: column;
+.contact {
+  display: flex;
+  flex-direction: column;
 }
 
 footer {
